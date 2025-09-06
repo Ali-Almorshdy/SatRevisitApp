@@ -5,3 +5,4 @@ matplotlib
 scipy
 astropy
 folium
+streamlit_folium 
