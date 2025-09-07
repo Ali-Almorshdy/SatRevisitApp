@@ -174,11 +174,11 @@ with st.sidebar:
     if mode == "Manual":
         st.subheader("🛰 Manual Satellite (UI order)")
         with st.form("add_sat_form", clear_on_submit=True):
-            a = st.number_input("a [km]", value=7000.0, step=1.0)
-            e = st.number_input("e", value=0.01, min_value=0.0, max_value=1.0, step=0.001)
+            a = st.number_input("a [km]", value=8000.0, step=1.0)
+            e = st.number_input("e", value=0.0, min_value=0.0, max_value=1.0, step=0.001)
             TA = st.number_input("TA [deg]", value=0.0, step=0.1)
             RA = st.number_input("RA (RAAN) [deg]", value=0.0, step=0.1)
-            incl = st.number_input("incl [deg]", value=98.0, step=0.1)
+            incl = st.number_input("incl [deg]", value=45.0, step=0.1)
             w = st.number_input("w (arg) [deg]", value=0.0, step=0.1)
             add_sat = st.form_submit_button("➕ Add Satellite")
             if add_sat:
