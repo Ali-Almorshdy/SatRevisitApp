@@ -2,7 +2,6 @@
 """
 GA optimizer for satellite revisit minimization.
 
-COE order everywhere: [a, e, TA, RA, incl, w]
 
 run_ga(...) returns (best_coes, best_score, history)
  - best_coes: np.ndarray shape (num_sats,6) in UI/GA order [a,e,TA,RA,incl,w]
@@ -21,7 +20,6 @@ from passes import compute_passes
 PENALTY = 1e9
 
 def _flatten_key(arr: np.ndarray, epoch: Optional[datetime], dt: float, duration_days: float):
-    """Simple hashable key for caching (rounded)."""
     f = np.round(np.asarray(arr).reshape(-1), 6)
     e_ts = None if epoch is None else int(epoch.timestamp())
     return (tuple(f.tolist()), e_ts, float(dt), float(duration_days))
@@ -157,8 +155,7 @@ def run_ga(
             children.append(c1_flat.reshape((num_sats, 6)))
             children.append(c2_flat.reshape((num_sats, 6)))
 
-        # Mutation (per-gene probability). To keep similar behavior to previous code,
-        # we perform per-gene mutation with small chance derived from mutation_rate.
+        
         gene_mut_rate = mutation_rate  # direct mapping
         for child in children:
             mask = (np.random.rand(child.shape[0], child.shape[1]) < gene_mut_rate)

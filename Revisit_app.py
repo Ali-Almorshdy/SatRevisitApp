@@ -1,10 +1,6 @@
 # app.py
 """
 Streamlit front-end for Satellite Pass & GA optimizer.
-
-- COE order everywhere: [a, e, TA, RA, incl, w]
-- GA uses gaoptm.run_ga (imported). gaoptm.run_ga accepts stop_flag and progress_callback.
-- compute_passes must accept COEs in same order.
 """
 
 import streamlit as st

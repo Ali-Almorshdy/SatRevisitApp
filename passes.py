@@ -1,6 +1,5 @@
-# put this in functions.py (or a new module) so you can "from functions import compute_passes"
 from typing import Any, Dict, List, Tuple
-from functions import gmst, sep, dEOM, COE2RV   # your existing helpers
+from functions import gmst, sep, dEOM, COE2RV   
 import numpy as np
 import pandas as pd
 from datetime import datetime
@@ -65,8 +64,7 @@ def compute_passes(
     tdt = Time(t0_array, format="jd").to_datetime()
     tf = tdt[-1]
 
-    # gmst expects (jd - 2400000.5) in your code pattern; keep same
-    theta = gmst(t0_array - 2400000.5)  # assumed to return radians array (len = len(times))
+    theta = gmst(t0_array - 2400000.5)  
 
     Re = 6378.0  # km
 
@@ -76,7 +74,7 @@ def compute_passes(
 
     # propagate per satellite
     for k in range(N):
-        r0, v0 = COE2RV(*coes[k])      # user-provided function
+        r0, v0 = COE2RV(*coes[k])     
         X0 = np.hstack((r0, v0))
 
         sol = solve_ivp(lambda t, y: dEOM(t, y), [times[0], times[-1]], X0,
@@ -118,24 +116,19 @@ def compute_passes(
 
             mask = value <= delt
             if not np.any(mask):
-                # no visibility at any sample
                 continue
 
-            # times when visible (as datetimes). Reverse to match your original behavior
             visible_times = np.array(tdt)[mask][::-1]
             if visible_times.size == 0:
                 continue
 
             # use your sep() to group contiguous times into intervals (expects datetimes)
             sep_result = sep(visible_times, gap_seconds)
-            # sep must return intervals at index 1 like in your MATLAB code: (_, intervals, _)
             if sep_result is None:
                 continue
-            # try to unpack defensively
             try:
                 _, intervals, _ = sep_result
             except Exception:
-                # assume sep returned only intervals
                 intervals = sep_result
 
             if intervals is None or len(intervals) == 0:
