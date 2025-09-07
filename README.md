@@ -46,6 +46,7 @@ You can run SatRevisitApp locally or access it online.
 git clone https://github.com/yourusername/SatRevisitApp.git
 pip install -r requirements.txt
 streamlit run Revisit_app.py
+```
 ### 🌐 Try it Online
 
 You can access the app directly here:  
