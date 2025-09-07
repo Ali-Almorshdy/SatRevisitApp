@@ -29,7 +29,6 @@ This tool is designed for **space engineers, mission analysts, and researchers**
 
 ## 📸 Screenshots  
 
-*(Add your figures here — 3 for Manual Mode, 3 for GA Optimization)*  
 <img width="1366" height="725" alt="M1" src="https://github.com/user-attachments/assets/2fd1a019-fc77-49f8-8b4b-e286530b350b" />
 
 ---<img width="1361" height="574" alt="M2" src="https://github.com/user-attachments/assets/26617d18-4984-41fa-9efa-5662013634e7" />
