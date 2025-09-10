@@ -39,7 +39,7 @@ You can run SatRevisitApp locally or access it online.
 
 ### Run Locally  
 ```bash
-git clone https://github.com/yourusername/SatRevisitApp.git
+git clone https://github.com/Ali-Almorshdy/SatRevisitApp.git
 pip install -r requirements.txt
 streamlit run Revisit_app.py
 ```
